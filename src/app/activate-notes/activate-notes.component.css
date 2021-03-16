@@ -1,0 +1,68 @@
+.add{
+	background-color: lightyellow;
+	width: 85%;
+    padding: 20px 20px;
+    margin: 20px 50px;
+	/* width: 80%;
+    padding: 20px 20px;
+    margin: 20px 10px; */
+    border: 1px solid #ccc;
+    border-style: solid;
+}
+
+.note {
+	display: flex;
+	padding: 10px 15px;
+	background-color: #FFF;
+	border-bottom: 1px solid #DDD;
+	justify-content: center;
+}
+
+.note .id {
+	flex: 1 1 50px;
+}
+
+.note .content {
+	flex: 1 1 100%;
+}
+
+.note.done {
+	background-color: lightgreen;
+}
+
+/* .note.edit{
+	margin-right: 150 px;
+}
+
+.note.delete{
+	margin-right: 150px;
+} */
+.note-input {
+	display: block;
+	width: 100%;
+	padding: 10px 15px;
+	appearance: none;
+	border: none;
+	background-color: lightsteelblue;
+	margin-top: 15px;
+	font-size: 20px;
+	outline: none;
+}
+
+.note-submit {
+	display: block;
+	width: 100%;
+	max-width: 200px;
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+
+	background-color: #FE4880;
+	color: #FFF;
+	margin: 15px auto;
+
+	padding: 10px 15px;
+	font-size: 18px;
+	font-weight: 700;
+}

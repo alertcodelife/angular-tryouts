@@ -1,0 +1,9 @@
+<p>note-update works!</p>
+<div *ngIf="note">
+    <h2> {{note.name}} update</h2>
+    <input id="name" [(ngModel)]="note.name">
+</div>
+<div>
+    <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
