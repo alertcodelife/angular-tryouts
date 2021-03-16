@@ -1,49 +1,7 @@
-<p>activate-notes works!</p>
-<!-- <h2>{{page_number}}</h2>
-<h2>{{elements_perpage}}</h2> -->
+{{addToPages()}}
 
-
-
-  <div class="pivotal">
-    <!-- <div *ngFor="let pno of getPageNumbers(); let i = index;" class="list-item">
-        <span (click)="TODO_CHANGE(i)">{{ pno }}</span>
-    </div> -->
-    
-        <input
-            type="text"
-            name="new_note"
-            placeholder="Enter Note...."
-            class="note-input"
-            [(ngModel)] = "new_note" #newNote
-        />
-        <button type="submit" (click)="addNote(newNote.value)" class="note-submit"> ADD </button>
-
-    <div>
-        <table>
-            <div *ngFor="let pgdisplay of pages_to_display;" (click)="addToPages(pgdisplay)">
-            </div>
-            <tr>
-                <td *ngFor="let pno of pages; let i = index;" class="list-item" (click)="gotoPage(i)">{{ pno }}</td>
-                <td></td> <td></td> <td> </td>
-                <td>
-                    <select [(ngModel)]="elements_perpage">
-                        <option *ngFor="let i of pages;" value="{{i}}">{{ i }}</option>
-                    </select>
-                </td>
-        </table>
-    </div>
-    <!-- <input [(ngModel)]="searchCriteria">
-    <h2>{{searchCriteria}}</h2> -->
-    <div *ngFor="let note of getActiveNotes(); let i = index;" class="note {{ (note.completed ? 'done' : '') }}">
-        <div class="id" (click)="toggleDone(i)" >{{ i }}</div>
-        <div class="content" (click)="toggleDone(i)">{{ note.name }}</div>
-        <button style="margin-right: 16px;" class="edit" routerLink = '/update/{{note.id}}'>Edit</button>
-        <button style="margin-right: 16px;" class="delete" (click)="deleteNote(note)">Remove</button> 
-    </div>
-</div>
-
-<!-- <div class="pivotal">
-    <input
+<div class="pivotal">
+   <input
         type="text"
         name="new_note"
         placeholder="Enter Note...."
@@ -51,13 +9,22 @@
         [(ngModel)] = "new_note" #newNote
     />
     <button type="submit" (click)="addNote(newNote.value)" class="note-submit"> ADD </button>
-    
-    <div *ngFor="let note of notes; let i = index;" class="note {{ (note.completed ? 'done' : '') }}">
-        <div class="id" (click)="toggleDone(i)" >{{ i }}</div>
-        <div class="id" (click)="toggleDone(i)" >{{ note.id }}</div>
-        <div class="content" (click)="toggleDone(i)">{{ note.name }}</div>
+    <div class="elements_perpage">
+        <label>Elements per page:</label>
+        <select [(ngModel)]="elements_perpage" (ngModelChange)="gotoPage(0)">
+            <option [ngValue]="null" selected disabled>Select Elements per page</option>
+            <option *ngFor="let i of per_page_list;" value="{{i}}"> {{ i }}</option>
+        </select>
+    </div>
+    <div *ngFor="let note of getActiveNotes(); let i = index;" class="note {{ (note.completed ? 'done' : '') }}">
+        <div class="content" (click)="toggleDone(i)">{{ note.title }}</div>
         <button style="margin-right: 16px;" class="edit" routerLink = '/update/{{note.id}}'>Edit</button>
         <button style="margin-right: 16px;" class="delete" (click)="deleteNote(note)">Remove</button> 
     </div>
-
-</div> -->
+    <div class="table">
+        <table class = "center">
+            <tr>
+                <td><span class = "dot" *ngFor="let pno of pages; let i = index;" (click)="gotoPage(i)">{{ pno }}</span></td>
+        </table>
+    </div>
+</div>

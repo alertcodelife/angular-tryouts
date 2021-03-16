@@ -1,7 +1,7 @@
 <p>note-update works!</p>
 <div *ngIf="note">
-    <h2> {{note.name}} update</h2>
-    <input id="name" [(ngModel)]="note.name">
+    <h2> {{note.title}} update</h2>
+    <input id="title" [(ngModel)]="note.title">
 </div>
 <div>
     <button (click)="goBack()">go back</button>

@@ -47,10 +47,11 @@ export class DisplayNotesComponent implements OnInit {
     this.notesService.deleteNote(note).subscribe();
   }
 
-  addNote(name: string): void{
-    name = name.trim();
-    if(!name) { return; }
-    this.notesService.addNote( { name } as Note).
+  addNote(title: string): void{
+    title = title.trim();
+    if(!title) { return; }
+
+    this.notesService.addNote( { title: title, content:"" } as Note).
         subscribe(newnote => {
           this.notes.push(newnote);
         })

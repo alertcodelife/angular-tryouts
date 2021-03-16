@@ -13,9 +13,10 @@ export class ActivateNotesComponent implements OnInit {
   public new_note: any;
 
   page_number: number = 0;
-  elements_perpage:number = 3;
-  pages_to_display:number = 0;
+  elements_perpage:number = 5;
+  pages_to_display:number = 1;
   public pages = [];
+  public per_page_list = [5,10,15,20];
   public searchCriteria: string = "";
 
   active_notes: Note[] = [];
@@ -23,7 +24,7 @@ export class ActivateNotesComponent implements OnInit {
 
   ngOnInit(){
     this.getNotes();
-    this.pages_to_display = this.notes.length;
+    // this.pages_to_display = this.elements_perpage/this.notes.length;
   }
 
   getActiveNotes() {
@@ -34,8 +35,18 @@ export class ActivateNotesComponent implements OnInit {
     this.page_number = id;
   }
 
-  addToPages(id:number) {
-    this.pages.push(id);
+  addToPages() {
+    // console.log("notes length:",this.notes.length);
+    // console.log("adding values: ", this.pages);
+    // console.log("elements perpage: ", this.elements_perpage);
+    // console.log("pages to display: ", this.pages_to_display);
+    this.pages = [];
+    // this.pages.push(id);
+    this.pages_to_display = this.notes.length/this.elements_perpage;
+    for (let i = 1; i < (+this.pages_to_display + 1); i++) {
+      this.pages.push(i);
+    }
+    // this.gotoPage(1);
   }
   
   toggleDone(id:number) {
@@ -53,10 +64,10 @@ export class ActivateNotesComponent implements OnInit {
     this.notesService.deleteNote(note).subscribe();
   }
 
-  addNote(name: string): void{
-    name = name.trim();
-    if(!name) { return; }
-    this.notesService.addNote( { name } as Note).
+  addNote(title: string): void{
+    title = title.trim();
+    if(!title) { return; }
+    this.notesService.addNote( { title: title, content:"" } as Note).
         subscribe(newnote => {
           this.notes.push(newnote);
         })
