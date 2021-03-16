@@ -21,7 +21,6 @@
     <div>
         <table>
             <div *ngFor="let pgdisplay of pages_to_display;" (click)="addToPages(pgdisplay)">
-
             </div>
             <tr>
                 <td *ngFor="let pno of pages; let i = index;" class="list-item" (click)="gotoPage(i)">{{ pno }}</td>
