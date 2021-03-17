@@ -3,4 +3,5 @@ export interface Note {
     content: string;
     title: string;
     completed: boolean;
+    editActive: boolean;
 }

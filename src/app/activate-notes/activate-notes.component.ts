@@ -79,9 +79,23 @@ export class ActivateNotesComponent implements OnInit {
     this.notesService.getNotes().subscribe(notes => this.notes = notes);
   }
 
+  editNote(note_id: number) {
+    console.log("edit note ", note_id);
+    this.notes[note_id].editActive = true;
+  }
+
   deleteNote(note: Note): void {
     this.notes = this.notes.filter(h => h !== note);
     this.notesService.deleteNote(note).subscribe();
+  }
+
+  saveNote(note_id: number) {
+    // TODO : Add logic to read the form from input boxes and save
+    this.notes[note_id].editActive = false;
+  }
+
+  isEditModeActiveFor(note_id: number) {
+    return this.notes[note_id].editActive;
   }
 
   addNote(title: string): void{
