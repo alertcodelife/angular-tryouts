@@ -61,11 +61,12 @@ export class ActivateNotesComponent implements OnInit {
   //   this.notes[id].completed = !this.notes[id].completed;
   //   this.notesService.updateNote(this.notes[id]).subscribe();
   // }
-  toggleDone(title: string) {
-    let id = this.notes.findIndex(x => x.title === title)
-    console.log("toggle -> ", id, this.notes[id].title)
-    this.notes[id].completed = !this.notes[id].completed;
-    this.notesService.updateNote(this.notes[id]).subscribe();
+  toggleDone(note: Note) {
+    console.log("toggleDone for ", note.id, note.title, note.editActive);
+    if (!note.editActive) {
+      note.completed = !note.completed;
+    }
+    this.notesService.updateNote(note).subscribe();
   }
   // a = [
   //   {prop1:"abc",prop2:"qwe"},
@@ -79,9 +80,10 @@ export class ActivateNotesComponent implements OnInit {
     this.notesService.getNotes().subscribe(notes => this.notes = notes);
   }
 
-  editNote(note_id: number) {
-    console.log("edit note ", note_id);
-    this.notes[note_id].editActive = true;
+  editNote(note: Note) {
+    console.log("edit note ", note.id, note.title, this.notes);
+    note.editActive = true;
+    this.notesService.updateNote(note).subscribe();
   }
 
   deleteNote(note: Note): void {
@@ -89,13 +91,14 @@ export class ActivateNotesComponent implements OnInit {
     this.notesService.deleteNote(note).subscribe();
   }
 
-  saveNote(note_id: number) {
+  saveNote(note: Note) {
     // TODO : Add logic to read the form from input boxes and save
-    this.notes[note_id].editActive = false;
+    note.editActive = false;
+    this.notesService.updateNote(note).subscribe();
   }
 
-  isEditModeActiveFor(note_id: number) {
-    return this.notes[note_id].editActive;
+  isEditModeActiveFor(note: Note) {
+    return note.editActive;
   }
 
   addNote(title: string): void{

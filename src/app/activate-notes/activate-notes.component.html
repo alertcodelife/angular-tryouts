@@ -29,8 +29,8 @@
             </tr>
             <tr *ngFor="let note of getActiveNotes();" class="note {{ (note.completed ? 'done' : '') }} border_bottom">
                 <!-- <td>{{ note.title }}</td> -->
-                <td class="row-content" (click)="toggleDone(note.title)">
-                    <div *ngIf="isEditModeActiveFor(note.id); else note_display_mode" class="note_edit_mode">
+                <td class="row-content" (click)="toggleDone(note)">
+                    <div *ngIf="isEditModeActiveFor(note); else note_display_mode" class="note_edit_mode">
                         <b>Edit mode</b><br> <br>
                         <label name="title" style="padding:10px">Title</label>
                             <input type="text" name="new_note" [(ngModel)]="note.title">
@@ -43,11 +43,11 @@
                     </ng-template>
                 </td>
                 <td>
-                    <div *ngIf="isEditModeActiveFor(note.id); else show_save_button">
-                        <button (click)="saveNote(note.id)">Save</button>    
+                    <div *ngIf="isEditModeActiveFor(note); else show_save_button">
+                        <button (click)="saveNote(note)">Save</button>    
                     </div>
                     <ng-template #show_save_button>
-                        <button (click)="editNote(note.id)">Edit</button>
+                        <button (click)="editNote(note)">Edit</button>
                     </ng-template>
                 </td>
                 <td><button style="margin-right: 16px;" (click)="deleteNote(note)">Remove</button> </td>
