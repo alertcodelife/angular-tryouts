@@ -13,7 +13,7 @@ export class GridNotesComponent implements OnInit {
   notes: Note[] = [];
   width:string;
 
-  public pageSettings: PageSettingsModel = { pageSize: 3};
+  public pageSettings: PageSettingsModel = { pageSize: 6};
   constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {

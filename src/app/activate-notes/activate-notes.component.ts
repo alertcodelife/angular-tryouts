@@ -20,6 +20,12 @@ export class ActivateNotesComponent implements OnInit {
   public searchCriteria: string = "";
 
   active_notes: Note[] = [];
+
+  isDesc: boolean = false;
+  column: string = "";
+
+  searchText: string = "";
+
   constructor(private notesService: NoteService) { }
 
   ngOnInit(){
@@ -28,7 +34,8 @@ export class ActivateNotesComponent implements OnInit {
   }
 
   getActiveNotes() {
-    return this.notes.slice(this.page_number * this.elements_perpage, (+this.page_number + 1) * this.elements_perpage );
+    return this.notes.filter(note => note.title.toLowerCase().indexOf(this.searchText.toLowerCase() ) > -1)
+    .slice(this.page_number * this.elements_perpage, (+this.page_number + 1) * this.elements_perpage );
   }
 
   gotoPage(id:number){
@@ -49,11 +56,24 @@ export class ActivateNotesComponent implements OnInit {
     // this.gotoPage(1);
   }
   
-  toggleDone(id:number) {
+  // toggleDone(id:number) {
+  //   console.log("toggle -> ", id, this.notes[id].title)
+  //   this.notes[id].completed = !this.notes[id].completed;
+  //   this.notesService.updateNote(this.notes[id]).subscribe();
+  // }
+  toggleDone(title: string) {
+    let id = this.notes.findIndex(x => x.title === title)
+    console.log("toggle -> ", id, this.notes[id].title)
     this.notes[id].completed = !this.notes[id].completed;
     this.notesService.updateNote(this.notes[id]).subscribe();
   }
-
+  // a = [
+  //   {prop1:"abc",prop2:"qwe"},
+  //   {prop1:"bnmb",prop2:"yutu"},
+  //   {prop1:"zxvz",prop2:"qwrq"}];
+  //   index = a. findIndex(x => x. prop2 ==="yutu");
+  //   ​
+  //   console. log(index);
   getNotes(): void { 
     console.log("get notes method");
     this.notesService.getNotes().subscribe(notes => this.notes = notes);
@@ -72,6 +92,24 @@ export class ActivateNotesComponent implements OnInit {
           this.notes.push(newnote);
         })
     this.new_note = "";
+  }
+
+  sort(property) {
+    this.isDesc = !this.isDesc; //change the direction    
+    this.column = property;
+    let direction = this.isDesc ? 1 : -1;
+
+    this.notes.sort(function (a, b) {
+      if (a[property] < b[property]) {
+        return -1 * direction;
+      }
+      else if (a[property] > b[property]) {
+        return 1 * direction;
+      }
+      else {
+        return 0;
+      }
+    });
   }
 
 }

@@ -12,6 +12,7 @@ export class DisplayNotesComponent implements OnInit {
   notes: Note[] = [];
   public new_note: any;
   public editbox: boolean = false;
+  searchText:string = "";
 
   constructor(private notesService: NoteService) { }
 

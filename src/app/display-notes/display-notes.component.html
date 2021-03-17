@@ -8,11 +8,14 @@
         [(ngModel)] = "new_note" #newNote
     />
     <button type="submit" (click)="addNote(newNote.value)" class="note-submit"> ADD </button>
-    
-    <div *ngFor="let note of notes; let i = index;" class="note {{ (note.completed ? 'done' : '') }}">
-        <div class="id" (click)="toggleDone(i)" >{{ i }}</div>
-        <div class="id" (click)="toggleDone(i)" >{{ note.id }}</div>
-        <div class="content" (click)="toggleDone(i)">{{ note.title }}</div>
+    <div>
+        <input type="text" [(ngModel)]="searchText" 
+           placeholder="Search By Note" />
+  </div>
+    <div *ngFor="let note of notes  | notetitlefilter : searchText" class="note {{ (note.completed ? 'done' : '') }}">
+        <!-- <div class="id" (click)="toggleDone(i)" >{{ i }}</div> -->
+        <div class="id" (click)="toggleDone(+note.id-1)" >{{ note.id }}</div>
+        <div class="content" (click)="toggleDone(+note.id-1)">{{ note.title }}</div>
         <button style="margin-right: 16px;" class="edit" routerLink = '/update/{{note.id}}'>Edit</button>
         <!-- <button style="margin-right: 16px;" class="edit" (click)="editNote(note)">Edit</button>
         <div *ngIf="editbox == true">

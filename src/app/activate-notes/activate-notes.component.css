@@ -11,11 +11,12 @@
 }
 
 .note {
-	display: flex;
+	/* display: flex;
 	padding: 10px 15px;
+    width: 118%;
 	background-color: #FFF;
 	border-bottom: 1px solid #DDD;
-	justify-content: center;
+	justify-content: center; */
 }
 
 .note .id {
@@ -67,6 +68,17 @@
 	font-weight: 700;
 }
 
+.search {
+    text-align: left;
+    color: hotpink;
+    margin-top: 20px;
+}
+
+div > select {
+    color: green;
+    margin-right: auto;
+    width: 50px;
+}
 
 .dot {
     height: 25px;
@@ -79,14 +91,41 @@
 .elements_perpage {
     margin-left: auto;
     color: brown;
+    width: 50px;
     margin-bottom: 20px;
 }
 
+table{
+    /* border: 1px solid #FE4880; */
+}
+
+.center {
+    background-color: #FFF;
+}
+th{
+    color: darkmagenta;
+    border-bottom: 1px dotted firebrick;
+}
 table, th, td {
     margin-top: 20px;
     text-align: center;
+    width: 100%;
+	padding: 10px 15px;
 }
-table.center {
+
+title {
+    text-align: left;
+}
+
+.center {
     margin-left: auto; 
     margin-right: auto;
-  }
+}
+.pointer_1{
+    width:80%;
+    cursor: pointer;
+}
+.pointer_2,.pointer_3{
+    width: 10%;
+    cursor: pointer;
+}

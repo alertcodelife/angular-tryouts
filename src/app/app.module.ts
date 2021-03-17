@@ -12,6 +12,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { GridModule, PagerModule, PageService, SortService, FilterService } from '@syncfusion/ej2-angular-grids';
 import { NoteService } from './note.service';
 import { NoteUpdateComponent } from './note-update/note-update.component';
+import { notetitlePipe } from './notetitle.pipe';
 // import { ActivateNotesComponent } from './activate-notes/activate-notes.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NoteUpdateComponent } from './note-update/note-update.component';
     AppComponent,
     routingComponents,
     NoteUpdateComponent,
+    notetitlePipe
     // ActivateNotesComponent,
     // GridNotesComponent
     // DisplayNotesComponent

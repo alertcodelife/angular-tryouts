@@ -9,22 +9,37 @@
         [(ngModel)] = "new_note" #newNote
     />
     <button type="submit" (click)="addNote(newNote.value)" class="note-submit"> ADD </button>
-    <div class="elements_perpage">
+    <div>
         <label>Elements per page:</label>
         <select [(ngModel)]="elements_perpage" (ngModelChange)="gotoPage(0)">
             <option [ngValue]="null" selected disabled>Select Elements per page</option>
             <option *ngFor="let i of per_page_list;" value="{{i}}"> {{ i }}</option>
         </select>
     </div>
-    <div *ngFor="let note of getActiveNotes(); let i = index;" class="note {{ (note.completed ? 'done' : '') }}">
-        <div class="content" (click)="toggleDone(i)">{{ note.title }}</div>
-        <button style="margin-right: 16px;" class="edit" routerLink = '/update/{{note.id}}'>Edit</button>
-        <button style="margin-right: 16px;" class="delete" (click)="deleteNote(note)">Remove</button> 
+    <div class = "search">
+            <input type="text" [(ngModel)]="searchText"  (ngModelChange)="gotoPage(0)" 
+               placeholder="Search By Note" />
     </div>
-    <div class="table">
-        <table class = "center">
+    <div>
+        <table class="center">
+             <tr>
+                <th class="pointer_1" (click)="sort('title')">TITLE</th>
+                <th class="pointer_2">EDITABLE</th>
+                <th class="pointer_3">DELETE</th>
+            </tr>
+            <tr *ngFor="let note of getActiveNotes();" class="note {{ (note.completed ? 'done' : '') }}">
+                <!-- <td>{{ note.title }}</td> -->
+                <td (click)="toggleDone(note.title)">{{ note.title }}</td>
+                <td><button routerLink = '/update/{{note.id}}'>Edit</button></td>
+                <td><button style="margin-right: 16px;" (click)="deleteNote(note)">Remove</button> </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table>
             <tr>
                 <td><span class = "dot" *ngFor="let pno of pages; let i = index;" (click)="gotoPage(i)">{{ pno }}</span></td>
+            </tr>
         </table>
     </div>
 </div>
