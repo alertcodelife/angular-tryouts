@@ -8,7 +8,7 @@ import { Note } from './note';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const notes = [
-      {id: 1, content: "", title: 'Walk', completed: false},
+      {id: 1, content: "Hello World", title: 'Walk', completed: false},
       {id: 2, content: "", title: 'Jog', completed: false},
       {id: 3, content: "", title: 'Play', completed: false},
       {id: 4, content: "", title: 'Yoga', completed: false},

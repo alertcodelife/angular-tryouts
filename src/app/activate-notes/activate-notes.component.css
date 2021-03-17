@@ -106,13 +106,21 @@ th{
     color: darkmagenta;
     border-bottom: 1px dotted firebrick;
 }
+tr.border_bottom td{
+    border-bottom: 1px solid black;
+}
 table, th, td {
+    font-family: arial,sans-serif;
+    font-size: 18px;
     margin-top: 20px;
     text-align: center;
     width: 100%;
 	padding: 10px 15px;
 }
 
+td.row-content {
+    text-align: left !important;
+}
 title {
     text-align: left;
 }

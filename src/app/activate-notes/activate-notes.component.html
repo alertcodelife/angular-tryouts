@@ -27,9 +27,9 @@
                 <th class="pointer_2">EDITABLE</th>
                 <th class="pointer_3">DELETE</th>
             </tr>
-            <tr *ngFor="let note of getActiveNotes();" class="note {{ (note.completed ? 'done' : '') }}">
+            <tr *ngFor="let note of getActiveNotes();" class="note {{ (note.completed ? 'done' : '') }} border_bottom">
                 <!-- <td>{{ note.title }}</td> -->
-                <td (click)="toggleDone(note.title)">{{ note.title }}</td>
+                <td class="row-content" (click)="toggleDone(note.title)"><b>{{ note.title }}</b> <p> {{note.content}}</p></td>
                 <td><button routerLink = '/update/{{note.id}}'>Edit</button></td>
                 <td><button style="margin-right: 16px;" (click)="deleteNote(note)">Remove</button> </td>
             </tr>
