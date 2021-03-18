@@ -23,6 +23,7 @@ export class ActivateNotesComponent implements OnInit {
 
   isDesc: boolean = false;
   column: string = "";
+  num_cols: number[] = [1,2,3];
 
   searchText: string = "";
 
@@ -33,8 +34,8 @@ export class ActivateNotesComponent implements OnInit {
     // this.pages_to_display = this.elements_perpage/this.notes.length;
   }
 
-  getActiveNotes() {
-    return this.notes.filter(note => note.title.toLowerCase().indexOf(this.searchText.toLowerCase() ) > -1)
+  getActiveNotes(barid: number) {
+    return this.notes.filter(note => note.barId == barid && (note.title.toLowerCase().indexOf(this.searchText.toLowerCase() ) > -1) )
     .slice(this.page_number * this.elements_perpage, (+this.page_number + 1) * this.elements_perpage );
   }
 

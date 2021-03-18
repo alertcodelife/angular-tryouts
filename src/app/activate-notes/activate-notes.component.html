@@ -1,14 +1,9 @@
 {{addToPages()}}
 
+<table class="pivotaltable">
+    <tr>
+        <td *ngFor="let barid of num_cols;">
 <div class="pivotal" style="width_per_div">
-   <input
-        type="text"
-        name="new_note"
-        placeholder="Enter Note...."
-        class="note-input"
-        [(ngModel)] = "new_note" #newNote
-    />
-    <button type="submit" (click)="addNote(newNote.value)" class="note-submit"> ADD </button>
     <div>
         <label>Elements per page:</label>
         <select [(ngModel)]="elements_perpage" (ngModelChange)="gotoPage(0)">
@@ -27,7 +22,7 @@
                 <th class="pointer_2">EDITABLE</th>
                 <th class="pointer_3">DELETE</th>
             </tr>
-            <tr *ngFor="let note of getActiveNotes();" class="note {{ (note.completed ? 'done' : '') }} border_bottom">
+            <tr *ngFor="let note of getActiveNotes(barid);" class="note {{ (note.completed ? 'done' : '') }} border_bottom">
                 <!-- <td>{{ note.title }}</td> -->
                 <td class="row-content" (click)="toggleDone(note)">
                     <div *ngIf="isEditModeActiveFor(note); else note_display_mode" class="note_edit_mode">
@@ -62,3 +57,6 @@
         </table>
     </div>
 </div>
+</td>
+</tr>
+</table>
