@@ -29,7 +29,7 @@
             </tr>
             <tr *ngFor="let note of getActiveNotes();" class="note {{ (note.completed ? 'done' : '') }}">
                 <!-- <td>{{ note.title }}</td> -->
-                <td (click)="toggleDone(note.title)">{{ note.title }}</td>
+                <td (click)="toggleDone(note)">{{ note.title }}</td>
                 <td><button routerLink = '/update/{{note.id}}'>Edit</button></td>
                 <td><button style="margin-right: 16px;" (click)="deleteNote(note)">Remove</button> </td>
             </tr>

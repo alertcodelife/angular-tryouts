@@ -61,11 +61,15 @@ export class ActivateNotesComponent implements OnInit {
   //   this.notes[id].completed = !this.notes[id].completed;
   //   this.notesService.updateNote(this.notes[id]).subscribe();
   // }
-  toggleDone(title: string) {
-    let id = this.notes.findIndex(x => x.title === title)
-    console.log("toggle -> ", id, this.notes[id].title)
-    this.notes[id].completed = !this.notes[id].completed;
-    this.notesService.updateNote(this.notes[id]).subscribe();
+  // toggleDone(title: string) {
+  //   let id = this.notes.findIndex(x => x.title === title)
+  //   console.log("toggle -> ", id, this.notes[id].title)
+  //   this.notes[id].completed = !this.notes[id].completed;
+  //   this.notesService.updateNote(this.notes[id]).subscribe();
+  // }
+  toggleDone(note: Note) {
+    note.completed = !note.completed;
+    this.notesService.updateNote(note).subscribe();
   }
   // a = [
   //   {prop1:"abc",prop2:"qwe"},
