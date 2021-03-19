@@ -1,9 +1,9 @@
-<p>note-update works!</p>
+<!-- <p>note-update works!</p> -->
 <div *ngIf="note">
-    <h2> {{note.title}} update</h2>
+    <h2> Update the title </h2>
     <input id="title" [(ngModel)]="note.title">
 </div>
 <div>
-    <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+    <button class="button" (click)="goBack()">go back</button>
+  <button class = "button" (click)="save()">save</button>
 </div>

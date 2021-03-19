@@ -1,6 +1,6 @@
 export interface Note {
     id: number;
-    content: string;
+    // content: string;
     title: string;
     completed: boolean;
 }

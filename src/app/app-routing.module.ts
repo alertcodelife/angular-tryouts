@@ -6,7 +6,8 @@ import { GridNotesComponent } from './grid-notes/grid-notes.component';
 import { NoteUpdateComponent } from './note-update/note-update.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'', pathMatch: 'full'},
+  // { path: '', redirectTo:'', pathMatch: 'full'},
+  { path: '', component: ActivateNotesComponent},
   // { path: 'displayNotes',component: DisplayNotesComponent},
   { path: 'displayNotes',component: ActivateNotesComponent},
   { path: 'update/:id', component: NoteUpdateComponent },

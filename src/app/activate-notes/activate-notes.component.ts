@@ -91,7 +91,8 @@ export class ActivateNotesComponent implements OnInit {
   addNote(title: string): void{
     title = title.trim();
     if(!title) { return; }
-    this.notesService.addNote( { title: title, content:"" } as Note).
+    // this.notesService.addNote( { title: title, content:"" } as Note).
+    this.notesService.addNote( { title: title } as Note).
         subscribe(newnote => {
           this.notes.push(newnote);
         })
