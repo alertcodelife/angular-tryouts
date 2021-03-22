@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~11.0.4",
     "@angular/platform-browser-dynamic": "~11.0.4",
     "@angular/router": "~11.0.4",
+    "@ckeditor/ckeditor5-angular": "^2.0.1",
+    "@ckeditor/ckeditor5-build-classic": "^26.0.0",
     "@syncfusion/ej2-angular-grids": "^18.4.47",
     "@syncfusion/ej2-material-theme": "~18.4.46",
     "angular-in-memory-web-api": "^0.11.0",

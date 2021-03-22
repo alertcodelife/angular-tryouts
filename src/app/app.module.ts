@@ -14,6 +14,7 @@ import { NoteService } from './note.service';
 import { NoteUpdateComponent } from './note-update/note-update.component';
 import { notetitlePipe } from './notetitle.pipe';
 // import { ActivateNotesComponent } from './activate-notes/activate-notes.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { notetitlePipe } from './notetitle.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    CKEditorModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false}),
     GridModule,PagerModule
   ],

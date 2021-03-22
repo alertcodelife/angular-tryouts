@@ -3,7 +3,7 @@
 <table class="pivotaltable">
     <tr>
         <td *ngFor="let barid of num_cols;">
-<div class="pivotal" style="width_per_div">
+<div class="pivotal">
     <div>
         <label>Elements per page:</label>
         <select [(ngModel)]="elements_perpage" (ngModelChange)="gotoPage(0)">
@@ -27,14 +27,18 @@
                 <td class="row-content" (click)="toggleDone(note)">
                     <div *ngIf="isEditModeActiveFor(note); else note_display_mode" class="note_edit_mode">
                         <b>Edit mode</b><br> <br>
-                        <label name="title" style="padding:10px">Title</label>
+                        <label name="title">Title</label>
                             <input type="text" name="new_note" [(ngModel)]="note.title">
                         <br>
-                        <label name="content" style="padding:10px">Content</label>
-                            <textarea type="text" name="new_note" [(ngModel)]="note.content" rows="4" cols="50"></textarea>
+                        <label name="content">Content</label>
+                            <ckeditor [editor]="Editor" [(ngModel)]="note.content"></ckeditor>
+                            <!-- <ckeditor [(ngModel)]="note.content" [editor]="Editor"></ckeditor> -->
+
+                            <!-- <textarea type="text" name="new_note" [(ngModel)]="note.content" rows="4" cols="50"></textarea> -->
                     </div>
                     <ng-template #note_display_mode>
-                        <b>{{ note.title }}</b> <p> {{note.content}}</p>
+                        <b>{{ note.title }}</b>  
+                        <div [innerHTML]="note.content"></div>
                     </ng-template>
                 </td>
                 <td>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from '../note';
 import { NoteService } from '../note.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 
 @Component({
   selector: 'app-activate-notes',
@@ -8,7 +10,8 @@ import { NoteService } from '../note.service';
   styleUrls: ['./activate-notes.component.css']
 })
 export class ActivateNotesComponent implements OnInit {
-  
+  public Editor = ClassicEditor;
+
   notes: Note[] = [];
   public new_note: any;
 
