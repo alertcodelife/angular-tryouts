@@ -11,6 +11,7 @@ export class ActivateNotesComponent implements OnInit {
   
   notes: Note[] = [];
   public new_note: any;
+  is_any_note: boolean = false;
 
   page_number: number = 0;
   elements_perpage:number = 5;
@@ -33,7 +34,18 @@ export class ActivateNotesComponent implements OnInit {
     // this.pages_to_display = this.elements_perpage/this.notes.length;
   }
 
+
+  allNotes() {
+    if(this.notes.filter(note => note.title.toLowerCase().indexOf(this.searchText.toLowerCase() ) > -1)){
+      this.is_any_note = true;
+    }
+    return this.notes.filter(note => note.title.toLowerCase().indexOf(this.searchText.toLowerCase() ) > -1)
+  }
+
   getActiveNotes() {
+    // this.active_notes = this.notes.filter(note => note.title.toLowerCase().indexOf(this.searchText.toLowerCase() ) > -1)
+    // .slice(this.page_number * this.elements_perpage, (+this.page_number + 1) * this.elements_perpage );
+
     return this.notes.filter(note => note.title.toLowerCase().indexOf(this.searchText.toLowerCase() ) > -1)
     .slice(this.page_number * this.elements_perpage, (+this.page_number + 1) * this.elements_perpage );
   }

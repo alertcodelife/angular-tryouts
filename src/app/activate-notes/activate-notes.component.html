@@ -20,26 +20,54 @@
             <input type="text" [(ngModel)]="searchText"  (ngModelChange)="gotoPage(0)" 
                placeholder="Search By Note" />
     </div>
-    <div>
+
+    <div *ngIf="searchText; then fullTable; else paginatedTable"></div>
+
+    <ng-template #fullTable>
         <table class="center">
-             <tr>
-                <th class="pointer_1" (click)="sort('title')">TITLE</th>
-                <th class="pointer_2">EDITABLE</th>
-                <th class="pointer_3">DELETE</th>
-            </tr>
-            <tr *ngFor="let note of getActiveNotes();" class="note {{ (note.completed ? 'done' : '') }}">
-                <!-- <td>{{ note.title }}</td> -->
-                <td (click)="toggleDone(note)">{{ note.title }}</td>
-                <td><button routerLink = '/update/{{note.id}}'>Edit</button></td>
-                <td><button style="margin-right: 16px;" (click)="deleteNote(note)">Remove</button> </td>
-            </tr>
-        </table>
-    </div>
-    <div>
-        <table>
             <tr>
-                <td><span class = "dot" *ngFor="let pno of pages; let i = index;" (click)="gotoPage(i)">{{ pno }}</span></td>
-            </tr>
-        </table>
-    </div>
+               <th class="pointer_1" (click)="sort('title')">TITLE</th>
+               <th class="pointer_2">EDITABLE</th>
+               <th class="pointer_3">DELETE</th>
+           </tr>
+           <tr *ngFor="let note of allNotes();" class="note {{ (note.completed ? 'done' : '') }}">
+               <!-- <td>{{ note.title }}</td> -->
+               <td (click)="toggleDone(note)">{{ note.title }}</td>
+               <td><button routerLink = '/update/{{note.id}}'>Edit</button></td>
+               <td><button style="margin-right: 16px;" (click)="deleteNote(note)">Remove</button> </td>
+           </tr>
+       </table>
+    </ng-template>
+
+    <ng-template #paginatedTable>
+   
+        <div>
+            <table class="center">
+                <tr>
+                    <th class="pointer_1" (click)="sort('title')">TITLE</th>
+                    <th class="pointer_2">EDITABLE</th>
+                    <th class="pointer_3">DELETE</th>
+                </tr>
+                <tr *ngFor="let note of getActiveNotes();" class="note {{ (note.completed ? 'done' : '') }}">
+                    <!-- <td>{{ note.title }}</td> -->
+                    <td (click)="toggleDone(note)">{{ note.title }}</td>
+                    <td><button routerLink = '/update/{{note.id}}'>Edit</button></td>
+                    <td><button style="margin-right: 16px;" (click)="deleteNote(note)">Remove</button> </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- <div *ngIf="searchText; then fullTable; else paginatedTable"></div>
+
+        <ng-template #fullTable>
+        
+        </ng-template>
+
+        <ng-template #paginatedTable> -->
+            <table>
+                <tr>
+                    <td><span class = "dot" *ngFor="let pno of pages; let i = index;" (click)="gotoPage(i)">{{ pno }}</span></td>
+                </tr>
+            </table>
+    </ng-template>
 </div>

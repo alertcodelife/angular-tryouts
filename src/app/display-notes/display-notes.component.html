@@ -11,7 +11,7 @@
     <div>
         <input type="text" [(ngModel)]="searchText" 
            placeholder="Search By Note" />
-  </div>
+    </div>
     <div *ngFor="let note of notes  | notetitlefilter : searchText" class="note {{ (note.completed ? 'done' : '') }}">
         <!-- <div class="id" (click)="toggleDone(i)" >{{ i }}</div> -->
         <div class="id" (click)="toggleDone(+note.id-1)" >{{ note.id }}</div>
