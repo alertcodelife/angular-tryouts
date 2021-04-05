@@ -24,6 +24,7 @@
     <div *ngIf="searchText; then fullTable; else paginatedTable"></div>
 
     <ng-template #fullTable>
+        <p> FUll Table</p>
         <table class="center">
             <tr>
                <th class="pointer_1" (click)="sort('title')">TITLE</th>
@@ -40,6 +41,7 @@
     </ng-template>
 
     <ng-template #paginatedTable>
+        <p> Paginated Table</p>
    
         <div>
             <table class="center">
